@@ -1,0 +1,11 @@
+<div>
+  <ul>
+   <li><%= @article.title %></li>  
+   <li><%= @article.body %></li>
+   <li>created by : <%= @article.user.email %></li>
+   <% if user_signed_in? && current_user == @article.user %>
+     <li><%= link_to "Edit", edit_article_path(@article) %></li>
+     <li><%= link_to "Delete", article_path(@article), method: :delete %></li>
+   <% end %>
+  </ul>
+</div>

@@ -11,9 +11,10 @@
   </head>
 
   <body>
-    <% flash.each do |type, message| %>
-      <p><%= message %></p>
-    <% end  %>
-    <%= yield %>
+    <%= render 'shared/messages' %>
+    <%= render 'navbar' %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

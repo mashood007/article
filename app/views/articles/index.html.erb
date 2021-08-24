@@ -1,1 +1,17 @@
-<%= link_to "New Article", new_article_path %>
+<% if user_signed_in? %>
+  <%= link_to "New Article", new_article_path %>
+<% end %>
+<div>
+  <% if @articles.empty? %>
+    <h1 id="no-article">No articles</h1>
+  <% else %>
+    <table> 
+      <% @articles.each do |article| %>
+        <tr>
+        <td><%= link_to article.title, article_path(article) %></td>
+          <td><%=article.body %></td> 
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

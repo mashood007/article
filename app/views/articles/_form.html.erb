@@ -1,0 +1,8 @@
+<% if @article.errors.any? %>
+  <div>Total <%= pluralize(@article.errors.count, "errors") %></div>
+  <% @article.errors.full_messages.each do |msg| %>
+    <p><%=msg%></p>
+  <% end %>
+<% end %>
+<%= f.text_field :title, placeholder: 'Title' %>
+<%= f.text_field :body, placeholder: 'Body' %>
