@@ -1,0 +1,2 @@
+module Article::CommentsHelper
+end

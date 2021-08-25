@@ -8,4 +8,26 @@
      <li><%= link_to "Delete", article_path(@article), method: :delete %></li>
    <% end %>
   </ul>
+  <div class="row">
+    <div class="col-md-6">
+      <% if user_signed_in? %>
+        <%= render 'comments/new', comment: @comment, article: @article %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <% if @article.comments.any? %>
+      <% persistence(@article.comments).each do |comment| %>
+        <div class='col-sm-4 alert alert-success ml-1'>
+          <div class='col-sm-12'>
+            <%= comment.content %>
+          </div>
+          <hr>
+          <div class='col-sm-12'>
+            <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user.email %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
