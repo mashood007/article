@@ -6,11 +6,13 @@ class CommentsController < ApplicationController
     @comment = @article.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save!
+      ActionCable.server.broadcast "comments_channel",
+        render(partial: 'comments/comment', object: @comment )
       flash[:success] = 'comment has been created'
     else
       flash[:alert] == 'error'
     end
-    redirect_to @article
+    # redirect_to @article
   end
 
   private

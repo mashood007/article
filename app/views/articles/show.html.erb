@@ -15,7 +15,7 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
+  <div id='comments' class="row">
     <% if @article.comments.any? %>
       <% persistence(@article.comments).each do |comment| %>
         <div class='col-sm-4 alert alert-success ml-1'>
